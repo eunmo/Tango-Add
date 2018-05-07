@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let statusbar = UIApplication.shared.value(forKey: "statusBar") as? UIView {
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let blurView = UIVisualEffectView(effect: blurEffect)
+            blurView.frame = statusbar.bounds
+            blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            statusbar.addSubview(blurView)
+            statusbar.sendSubview(toBack: blurView)
+        }
+        
         return true
     }
 
