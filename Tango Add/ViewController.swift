@@ -12,18 +12,28 @@ import WebKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
+    let url = URL(string: "http://1.235.106.140:3010/#/add/J")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let url = URL(string: "http://1.235.106.140:3010/#/add/J")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
+        
+        webView.scrollView.bounces = true
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView(sender:)), for: UIControlEvents.valueChanged)
+        webView.scrollView.addSubview(refreshControl)
     }
 
     override func prefersHomeIndicatorAutoHidden() -> Bool {
         return true
+    }
+    
+    @objc func refreshWebView(sender: UIRefreshControl) {
+        webView.load(URLRequest(url: url))
+        sender.endRefreshing()
     }
 }
 
