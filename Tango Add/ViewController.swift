@@ -12,7 +12,7 @@ import WebKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
-    let url = URL(string: "http://52.195.14.242:3020/#/add/J")!
+    let url = URL(string: "http://13.230.33.104:3020/#/add/J")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
