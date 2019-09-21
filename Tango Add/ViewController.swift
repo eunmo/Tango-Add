@@ -9,25 +9,35 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WKUIDelegate {
 
-    @IBOutlet weak var webView: WKWebView!
+    var webView: WKWebView!
     let url = URL(string: "http://13.230.33.104:3020/#/add/J")!
+    
+    override func loadView() {
+        webView = WKWebView(frame: .zero)
+        webView.uiDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
+        view = webView
+        
+        webView.scrollView.bounces = true
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView(sender:)), for: UIControl.Event.valueChanged)
+        webView.scrollView.addSubview(refreshControl)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-        
-        webView.scrollView.bounces = true
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ViewController.refreshWebView(sender:)), for: UIControlEvents.valueChanged)
-        webView.scrollView.addSubview(refreshControl)
     }
 
-    override func prefersHomeIndicatorAutoHidden() -> Bool {
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
+    
+    override var prefersStatusBarHidden: Bool {
         return true
     }
     
