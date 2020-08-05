@@ -34,16 +34,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="793-h8-m0B">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="table" catalog="system" id="d9x-tC-my7">
-                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <connections>
-                                    <action selector="onClickSummary:" destination="BYZ-38-t0r" id="swd-2G-RIa"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem systemItem="add" id="aBs-vf-RLS">
                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <action selector="onClickAdd:" destination="BYZ-38-t0r" id="xRX-fS-5Vw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="table" catalog="system" id="d9x-tC-my7">
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="onClickSummary:" destination="BYZ-38-t0r" id="swd-2G-RIa"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="YCy-20-YyD">
