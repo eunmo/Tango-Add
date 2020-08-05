@@ -12,7 +12,7 @@ import WebKit
 class ViewController: UIViewController, WKUIDelegate {
 
     var webView: WKWebView!
-    let url = URL(string: "http://13.230.33.104:3020/#/add/J")!
+    let url = URL(string: "http://tango.eunmo.be/add")!
     
     override func loadView() {
         webView = WKWebView(frame: .zero)
@@ -29,7 +29,7 @@ class ViewController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         webView.load(URLRequest(url: url))
     }
 
