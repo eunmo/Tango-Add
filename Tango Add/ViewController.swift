@@ -9,13 +9,25 @@
 import UIKit
 import WebKit
 
+let serverAddress = "http://tango.eunmo.be"
+
 class ViewController: UIViewController, WKUIDelegate {
 
     var webView: WKWebView!
-    let url = URL(string: "http://tango.eunmo.be/add")!
+    let addUrl = URL(string: "\(serverAddress)/add")!
+    let searchUrl = URL(string: "\(serverAddress)/search")!
+    let summaryUrl = URL(string: "\(serverAddress)/summary")!
     
     override func loadView() {
-        webView = WKWebView(frame: .zero)
+        let userScript = WKUserScript(source: "window.isWebkit = true;", injectionTime: WKUserScriptInjectionTime.atDocumentStart, forMainFrameOnly: true)
+        
+        let contentController = WKUserContentController()
+        contentController.addUserScript(userScript)
+        
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        
+        webView = WKWebView(frame: .zero, configuration: config)
         webView.uiDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         view = webView
@@ -30,7 +42,7 @@ class ViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        webView.load(URLRequest(url: url))
+        webView.load(URLRequest(url: addUrl))
     }
 
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -42,8 +54,19 @@ class ViewController: UIViewController, WKUIDelegate {
     }
     
     @objc func refreshWebView(sender: UIRefreshControl) {
-        webView.load(URLRequest(url: url))
+        webView.load(URLRequest(url: addUrl))
         sender.endRefreshing()
+    }
+    
+    @IBAction func onClickSearch(_ sender: UIBarButtonItem) {
+        webView.load(URLRequest(url: searchUrl))
+    }
+    
+    @IBAction func onClickAdd(_ sender: UIBarButtonItem) {
+        webView.load(URLRequest(url: addUrl))
+    }
+    @IBAction func onClickSummary(_ sender: UIBarButtonItem) {
+        webView.load(URLRequest(url: summaryUrl))
     }
 }
 
