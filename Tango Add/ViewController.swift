@@ -59,14 +59,15 @@ class ViewController: UIViewController, WKUIDelegate {
     }
     
     @IBAction func onClickSearch(_ sender: UIBarButtonItem) {
-        webView.load(URLRequest(url: searchUrl))
+        webView.evaluateJavaScript("window.wkLink('/search');")
     }
     
     @IBAction func onClickAdd(_ sender: UIBarButtonItem) {
-        webView.load(URLRequest(url: addUrl))
+        webView.evaluateJavaScript("window.wkLink('/add');")
     }
+    
     @IBAction func onClickSummary(_ sender: UIBarButtonItem) {
-        webView.load(URLRequest(url: summaryUrl))
+        webView.evaluateJavaScript("window.wkLink('/summary');")
     }
 }
 
