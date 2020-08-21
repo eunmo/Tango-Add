@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-let serverAddress = "http://tango.eunmo.be"
+let serverAddress = "https://tango.eunmo.be"
 
 class ViewController: UIViewController, WKUIDelegate {
 
