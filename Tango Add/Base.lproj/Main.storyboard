@@ -42,7 +42,7 @@
                                     <action selector="onClickAdd:" destination="BYZ-38-t0r" id="xRX-fS-5Vw"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="table" catalog="system" id="d9x-tC-my7">
+                            <barButtonItem title="Item" image="calendar" catalog="system" id="d9x-tC-my7">
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="onClickSummary:" destination="BYZ-38-t0r" id="swd-2G-RIa"/>
@@ -90,7 +90,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="table" catalog="system" width="128" height="93"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
